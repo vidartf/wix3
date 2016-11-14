@@ -1,0 +1,49 @@
+
+# Notes:
+#   - Minimal appveyor.yml file is an empty file. All sections are optional.
+#   - Indent each level of configuration with 2 spaces. Do not use tabs!
+#   - All section names are case-sensitive.
+#   - Section names should be unique on each level.
+
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+
+# Maximum number of concurrent jobs for the project
+max_jobs: 2
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# set clone depth
+clone_depth: 5                      # clone entire repository history if not defined
+
+# environment variables
+
+
+# scripts that run after cloning repository
+install:
+  - MSBuild tools/OneTimeWixBuildInitialization.proj
+
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+# to add several platforms to build matrix:
+#platform:
+#  - x86
+#  - Any CPU
+
+# build Configuration, i.e. Debug, Release, etc.
+configuration: Release
+
+build:
+  # MSBuild verbosity level
+  verbosity: detailed
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+  - '"C:/Program Files (x86)/MSBuild/14.0/Bin/MSBuild.exe"'
